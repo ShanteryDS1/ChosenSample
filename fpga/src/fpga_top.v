@@ -15,6 +15,40 @@
 // 
 // ===========================================================
 
+// CY7C68013A Slave FIFO
+// PD7          FD[15]
+// PD6          FD[14]
+// PD5          FD[13]
+// PD4          FD[12]
+// PD3          FD[11]
+// PD2          FD[10]
+// PD1          FD[ 9]
+// PD0          FD[ 8]
+// PB7          FD[ 7]
+// PB6          FD[ 6]
+// PB5          FD[ 5]
+// PB4          FD[ 4]
+// PB3          FD[ 3]
+// PB2          FD[ 2]
+// PB1          FD[ 1]
+// PB0          FD[ 0]
+//
+// RDY0         SLRD
+// RDY1         SLWR
+//
+// CTL0         FLAGA
+// CTL1         FLAGB
+// CTL2         FLAGC
+//
+// PA0/INT0#    PA0/INT0#
+// PA1/INT1#    PA1/INT1#
+// PA2          SLOE
+// PA3/WU2      PA3/WU2
+// PA4          FIFOADR0
+// PA5          FIFOADR1
+// PA6          PKTEND
+// PA7          PA7/FLAGD/SLCS#
+
 module fpga_top (
   input            USB_CLKO,
   input            USB_RESET2,
@@ -25,8 +59,8 @@ module fpga_top (
   inout      [1:0] USB_RDY,
   inout      [2:0] USB_CTL,
   inout      [7:0] USB_PA,
-  inout      [7:0] USB_PD,
-  inout      [7:0] USB_PB,
+  inout      [7:0] USB_PD, // Slave FIFO
+  inout      [7:0] USB_PB, // Slave FIFO
   inout            JTAG_TDO,
   inout            JTAG_TDI,
   inout            JTAG_PROG,
@@ -66,11 +100,21 @@ module fpga_top (
   input            SW1
 );
 
+reg [31:0] counter;
+
 always @(posedge USB_CLKO) begin
-  if (USB_RESET2) begin
+  if (~USB_RESET2) begin
     USB_IFCLK <= 1'b0;
   end else begin
-    USB_IFCLK <= USB_CLKO;
+    USB_IFCLK <= ~USB_IFCLK;
+  end
+end
+
+always @(posedge USB_IFCLK) begin
+  if (~SW1) begin
+    counter   <= 32'd0;
+  end else begin
+    counter   <= counter + 32'd1;
   end
 end
 
@@ -79,8 +123,9 @@ assign USB_SCL = 1'b1;
 assign USB_SDA = 1'b1;
 assign USB_RDY = 2'b00;
 assign USB_CTL = 3'b000;
-assign USB_PA = USB_PD;
-assign USB_PB = USB_PD;
+assign USB_PA = 8'h00;
+assign USB_PB = counter[23:16]; // Slave FIFO
+assign USB_PD = counter[31:24]; // Slave FIFO
 assign SCLK = USB_CLKO;
 assign DIN = 1'b1;
 assign CS = 1'b1;

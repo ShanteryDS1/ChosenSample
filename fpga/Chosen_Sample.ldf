@@ -9,9 +9,6 @@
         <Source name="Chosen_Sample.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
-        <Source name="impl1/impl1.xcf" type="Programming Project File" type_short="Programming">
-            <Options/>
-        </Source>
     </Implementation>
     <Strategy name="Strategy1" file="Chosen_Sample1.sty"/>
 </BaliProject>
