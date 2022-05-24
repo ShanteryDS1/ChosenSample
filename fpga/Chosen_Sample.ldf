@@ -3,10 +3,13 @@
     <Options/>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="lse" default_strategy="Strategy1">
         <Options def_top="fpga_top"/>
-        <Source name="fpga_top.v" type="Verilog" type_short="Verilog">
+        <Source name="src/fpga_top.v" type="Verilog" type_short="Verilog">
             <Options top_module="fpga_top"/>
         </Source>
         <Source name="Chosen_Sample.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="impl1/impl1.xcf" type="Programming Project File" type_short="Programming">
             <Options/>
         </Source>
     </Implementation>
