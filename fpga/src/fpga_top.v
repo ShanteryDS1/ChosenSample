@@ -61,14 +61,14 @@ module fpga_top (
   inout      [7:0] USB_PA,
   inout      [7:0] USB_PD, // Slave FIFO
   inout      [7:0] USB_PB, // Slave FIFO
-  inout            JTAG_TDO,
-  inout            JTAG_TDI,
-  inout            JTAG_PROG,
-  inout            JTAG_TRST,
-  inout            JTAG_TMS,
-  inout            JTAG_TCK,
-  inout            JTAG_DONE,
-  inout            JTAG_INIT,
+  inout            JTAG_TDO,  // 38 ( 2)
+  inout            JTAG_TDI,  // 37 ( 3)
+  inout            JTAG_PROG, // 32 ( 4)x
+  inout            JTAG_TRST, // 31 ( 5)x
+  inout            JTAG_TMS,  // 30 ( 6)
+  inout            JTAG_TCK,  // 23 ( 8)
+  inout            JTAG_DONE, // 22 ( 9)x
+  inout            JTAG_INIT, // 21 (10)x
   inout            SCLK,
   inout            DIN,
   inout            CS,
@@ -77,27 +77,27 @@ module fpga_top (
   output           CH1,
   output           CH2,
   output           CH3,
-  inout            LPT_1,
-  inout            LPT_2,
-  inout            LPT_3,
-  inout            LPT_4,
-  inout            LPT_5,
-  inout            LPT_6,
-  inout            LPT_7,
-  inout            LPT_8,
-  inout            LPT_9,
-  inout            LPT_10,
-  inout            LPT_11,
-  inout            LPT_12,
-  inout            LPT_13,
-  inout            LPT_14,
-  inout            LPT_15,
-  inout            LPT_16,
-  input            DSW0,
-  input            DSW1,
-  input            DSW2,
-  input            DSW3,
-  input            SW1
+  inout            LPT_1,  // 
+  inout            LPT_2,  // -VCC
+  inout            LPT_3,  // VCC
+  inout            LPT_4,  //  -GND
+  inout            LPT_5,  // GND
+  inout            LPT_6,  //  -TCK
+  inout            LPT_7,  // TCK
+  inout            LPT_8,  //  -TDO
+  inout            LPT_9,  // TDO
+  inout            LPT_10, //  -TDI
+  inout            LPT_11, // TDI
+  inout            LPT_12, //  -TMS
+  inout            LPT_13, // TMS
+  inout            LPT_14, // 
+  inout            LPT_15, // 
+  inout            LPT_16, // 
+  input            DSW0, // (13)
+  input            DSW1, // (12)
+  input            DSW2, // (11)
+  input            DSW3, // (10)
+  input            SW1   // (81)
 );
 
 reg [31:0] counter;
@@ -118,38 +118,48 @@ always @(posedge USB_IFCLK) begin
   end
 end
 
-assign USB_WAKEUP = 1'b1;
-assign USB_SCL = 1'b1;
-assign USB_SDA = 1'b1;
-assign USB_RDY = 2'b00;
-assign USB_CTL = 3'b000;
-assign USB_PA = 8'h00;
-assign USB_PB = counter[23:16]; // Slave FIFO
-assign USB_PD = counter[31:24]; // Slave FIFO
-assign SCLK = USB_CLKO;
-assign DIN = 1'b1;
-assign CS = 1'b1;
-assign DOUT = 1'b1;
-assign JTAG_TDO = 1'b1;
-assign JTAG_TDI = 1'b1;
-assign JTAG_PROG = 1'b1;
-assign JTAG_TRST = 1'b1;
-assign JTAG_TMS = 1'b1;
-assign JTAG_TCK = 1'b1;
-assign JTAG_DONE = SW1;
-assign JTAG_INIT = ~SW1;
-assign CH0 = DSW0;
-assign CH1 = DSW1;
-assign CH2 = DSW2;
-assign CH3 = DSW3;
-assign LPT_16 = LPT_8;
-assign LPT_15 = LPT_7;
-assign LPT_14 = LPT_6;
-assign LPT_13 = LPT_5;
-assign LPT_12 = LPT_4;
-assign LPT_11 = LPT_3;
-assign LPT_10 = LPT_2;
-assign LPT_9 = LPT_1;
 
+
+assign USB_WAKEUP = 1'b1;
+assign USB_SCL    = 1'b1;
+assign USB_SDA    = 1'b1;
+assign USB_RDY    = 2'b00;
+assign USB_CTL    = 3'b000;
+assign USB_PA     = 8'h00;
+assign USB_PB     = counter[23:16]; // Slave FIFO
+assign USB_PD     = counter[31:24]; // Slave FIFO
+assign SCLK       = USB_CLKO;
+assign DIN        = 1'b1;
+assign CS         = 1'b1;
+assign DOUT       = 1'b1;
+assign JTAG_TDO   = (DSW0) ? LPT_2 : LPT_6;
+//assign JTAG_TDI = 1'b1;
+//assign JTAG_PROG = 1'b1;
+//assign JTAG_TRST = 1'b1;
+//assign JTAG_TMS = 1'b1;
+//assign JTAG_TCK = 1'b1;
+//assign JTAG_DONE = SW1;
+//assign JTAG_INIT = ~SW1;
+assign CH0 = DSW0; // (1)
+assign CH1 = DSW1; // (2)
+assign CH2 = DSW2; // (3)
+assign CH3 = DSW3; // (4)
+assign LPT_1  = (DSW0) ? JTAG_TCK : LPT_5;  // ( 6) TCK
+//assign LPT_2  = 1'b0; // ( 7) TDO
+assign LPT_3  = (DSW0) ? JTAG_TDI : LPT_7; // ( 8) TDI
+assign LPT_4  = (DSW0) ? JTAG_TMS : LPT_8; // ( 9) TMS
+//assign LPT_5  = ; // (10) TCK
+//assign LPT_6  = ; // (11) TDO
+//assign LPT_7  = ; // (12) TDI
+//assign LPT_8  = ; // (13) TMS
+// ---
+//assign LPT_9  = ; // (14)
+//assign LPT_10 = ; // (15)
+//assign LPT_11 = ; // (21)
+//assign LPT_12 = ; // (22)
+//assign LPT_13 = ; // (23)
+//assign LPT_14 = ; // (24)
+//assign LPT_15 = ; // (25)
+//assign LPT_16 = ; // (26)
 
 endmodule

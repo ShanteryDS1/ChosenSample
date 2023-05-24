@@ -1,0 +1,26 @@
+<Project ModBy="Inserter" SigType="0" Name="D:/shanteryds1.git/Chosen_Sample/fpga/Reveal/JTAGTest.rvl" Date="2023-05-24">
+    <IP Version="1_6_042617"/>
+    <Design DesignEntry="Schematic/Verilog HDL" Synthesis="lse" DeviceFamily="MachXO" DesignName="Chosen_Sample"/>
+    <Core InsertDataset="0" Insert="1" Reveal_sig="493970968" Name="fpga_top_LA0" ID="0">
+        <Setting>
+            <Clock SampleClk="USB_CLKO" SampleEnable="0" EnableClk="" EnableClk_Pri="0"/>
+            <TraceBuffer Implementation="0" BitTimeStamp="0" hasTimeStamp="0" IncTrigSig="0" BufferDepth="2048"/>
+            <Capture Mode="0" MinSamplesPerTrig="32"/>
+            <Event CntEnable="0" MaxEventCnt="8"/>
+            <TrigOut Polarity="0" MinPulseWidth="0" TrigOutNetType="1" EnableTrigOut="0" TrigOutNet="reveal_debug_fpga_top_LA0_net"/>
+            <DistRAM Disable="0"/>
+        </Setting>
+        <Dataset Name="Base">
+            <Trace>
+                <Sig Type="SIG" Name="LPT_7"/>
+                <Sig Type="SIG" Name="JTAG_TDO"/>
+                <Sig Type="SIG" Name="LPT_11"/>
+                <Sig Type="SIG" Name="LPT_13"/>
+            </Trace>
+            <Trigger>
+                <TU Serialbits="0" Type="0" ID="1" Sig="LPT_13,"/>
+                <TE MaxSequence="2" MaxEvnCnt="1" ID="1" Resource="0"/>
+            </Trigger>
+        </Dataset>
+    </Core>
+</Project>

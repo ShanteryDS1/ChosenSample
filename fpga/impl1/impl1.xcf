@@ -19,9 +19,9 @@
 				<BScanLen>1</BScanLen>
 				<BScanVal>0</BScanVal>
 			</Bypass>
-			<File>D:/shanteryds1.git/Chosen_Sample/fpga/impl1/Chosen_Sample_impl1.jed</File>
-			<MaskFile>C:/lscc/diamond/3.12/data/vmdata/database\xpga\machxo\lcmxo1200.msk</MaskFile>
-			<FileTime>05/24/22 15:08:57</FileTime>
+			<File>D:/Shantery.git/Chosen_Sample/fpga/impl1/Chosen_Sample_impl1.jed</File>
+			<MaskFile>D:/lscc/diamond/3.12/data/vmdata/database\xpga\machxo\lcmxo1200.msk</MaskFile>
+			<FileTime>06/03/22 21:55:06</FileTime>
 			<JedecChecksum>0xF528</JedecChecksum>
 			<Operation>SRAM Program,Verify</Operation>
 			<Option>
@@ -47,14 +47,12 @@
 		<TCKDelay>1</TCKDelay>
 	</ProjectOptions>
 	<CableOptions>
-		<CableName>USB2</CableName>
-		<PortAdd>FTUSB-0</PortAdd>
-		<USBID>Dual RS232 A Location 0000 Serial A</USBID>
+		<CableName>USB</CableName>
+		<PortAdd>EzUSB-0</PortAdd>
+		<USBID>\\?\usb#vid_1134&amp;amp;pid_8001#5&amp;amp;1fae0872&amp;amp;0&amp;amp;8#</USBID>
 		<JTAGPinSetting>
 			TRST	ABSENT;
 			ISPEN	ABSENT;
 		</JTAGPinSetting>
-		<TRSTConnect value="TRUE"/>
-		<ISPENConnect value="TRUE"/>
 	</CableOptions>
 </ispXCF>

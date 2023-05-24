@@ -1,0 +1,41 @@
+<!DOCTYPE ispTLA>
+<ispTLA>
+ <CreationDate>?? 5 24 22:25:28 2023</CreationDate>
+ <XCFFileName/>
+ <CableSetting>
+  <IsTRSTConnected val="false"/>
+  <TRSTSetting val="0"/>
+  <IsBSCANConnected val="false"/>
+  <BSCANSetting val="0"/>
+  <CableType val="USB2"/>
+  <PortAddress val="0"/>
+  <PortSetting val="0"/>
+  <TCKDelay val="1"/>
+ </CableSetting>
+ <DeviceCount>1</DeviceCount>
+ <Device>
+  <DeviceIndex>0</DeviceIndex>
+  <DeviceName>1. LCMXO1200C</DeviceName>
+  <DeviceID>0x01289043</DeviceID>
+  <HasIspTRACY>true</HasIspTRACY>
+  <HasJTAG2WB>false</HasJTAG2WB>
+  <SERDES/>
+  <IRBypassLen>8</IRBypassLen>
+  <RVLFileName>JTAGTest.rvl</RVLFileName>
+  <RVSFileName>JTAGTest.rvs</RVSFileName>
+  <LACoreCount>1</LACoreCount>
+  <WinUI CoreIndex="0">
+   <TraceSigTreeData>
+    <TraceSignal IsHidden="false" Name="LPT_7" NodeType="0" PortIndex="0"/>
+    <TraceSignal IsHidden="false" Name="JTAG_TDO" NodeType="0" PortIndex="1"/>
+    <TraceSignal IsHidden="false" Name="LPT_11" NodeType="0" PortIndex="2"/>
+    <TraceSignal IsHidden="false" Name="LPT_13" NodeType="0" PortIndex="3"/>
+   </TraceSigTreeData>
+   <TriggerUI UserSelect="0" PreSelectType="0" PreSelect="1" UserSelectPos="0"/>
+   <CoreRun Run="true"/>
+   <CoreWndUIData>
+    <ClockFrequency Unit="ns" Frequency="-1.0"/>
+   </CoreWndUIData>
+  </WinUI>
+ </Device>
+</ispTLA>
