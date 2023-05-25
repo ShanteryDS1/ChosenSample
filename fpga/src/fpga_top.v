@@ -77,19 +77,19 @@ module fpga_top (
   output           CH1,
   output           CH2,
   output           CH3,
-  inout            LPT_1,  // 
-  inout            LPT_2,  // -VCC
-  inout            LPT_3,  // VCC
-  inout            LPT_4,  //  -GND
-  inout            LPT_5,  // GND
-  inout            LPT_6,  //  -TCK
-  inout            LPT_7,  // TCK
-  inout            LPT_8,  //  -TDO
-  inout            LPT_9,  // TDO
-  inout            LPT_10, //  -TDI
-  inout            LPT_11, // TDI
-  inout            LPT_12, //  -TMS
-  inout            LPT_13, // TMS
+  output           LPT_1,  // TCK-+- To Board
+  input            LPT_2,  // TDO |
+  output           LPT_3,  // TDI |
+  output           LPT_4,  // TMS-+
+  input            LPT_5,  // TCK-+- To Platform Cable
+  output           LPT_6,  // TDO |
+  input            LPT_7,  // TDI |
+  input            LPT_8,  // TMS-+
+  inout            LPT_9,  // 
+  inout            LPT_10, // 
+  inout            LPT_11, // 
+  inout            LPT_12, // 
+  inout            LPT_13, // 
   inout            LPT_14, // 
   inout            LPT_15, // 
   inout            LPT_16, // 
@@ -132,7 +132,7 @@ assign SCLK       = USB_CLKO;
 assign DIN        = 1'b1;
 assign CS         = 1'b1;
 assign DOUT       = 1'b1;
-assign JTAG_TDO   = (DSW0) ? LPT_2 : LPT_6;
+assign JTAG_TDO   = LPT_2;
 //assign JTAG_TDI = 1'b1;
 //assign JTAG_PROG = 1'b1;
 //assign JTAG_TRST = 1'b1;
@@ -149,14 +149,14 @@ assign LPT_1  = (DSW0) ? JTAG_TCK : LPT_5;  // ( 6) TCK
 assign LPT_3  = (DSW0) ? JTAG_TDI : LPT_7; // ( 8) TDI
 assign LPT_4  = (DSW0) ? JTAG_TMS : LPT_8; // ( 9) TMS
 //assign LPT_5  = ; // (10) TCK
-//assign LPT_6  = ; // (11) TDO
+assign LPT_6  = LPT_2; // (11) TDO
 //assign LPT_7  = ; // (12) TDI
 //assign LPT_8  = ; // (13) TMS
 // ---
-//assign LPT_9  = ; // (14)
-//assign LPT_10 = ; // (15)
-//assign LPT_11 = ; // (21)
-//assign LPT_12 = ; // (22)
+assign LPT_9  = LPT_1; // (14)
+assign LPT_10 = LPT_2; // (15)
+assign LPT_11 = LPT_3; // (21)
+assign LPT_12 = LPT_4; // (22)
 //assign LPT_13 = ; // (23)
 //assign LPT_14 = ; // (24)
 //assign LPT_15 = ; // (25)

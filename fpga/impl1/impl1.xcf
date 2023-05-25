@@ -20,9 +20,9 @@
 				<BScanVal>0</BScanVal>
 			</Bypass>
 			<File>D:/shanteryds1.git/Chosen_Sample/fpga/impl1/Chosen_Sample_impl1.jed</File>
-			<MaskFile>D:/lscc/diamond/3.12/data/vmdata/database\xpga\machxo\lcmxo1200.msk</MaskFile>
-			<FileTime>05/24/23 23:23:52</FileTime>
-			<JedecChecksum>0x23D1</JedecChecksum>
+			<MaskFile>C:/lscc/diamond/3.12/data/vmdata/database\xpga\machxo\lcmxo1200.msk</MaskFile>
+			<FileTime>05/25/23 15:15:22</FileTime>
+			<JedecChecksum>0x1D23</JedecChecksum>
 			<Operation>SRAM Program,Verify</Operation>
 			<Option>
 				<SVFVendor>JTAG STANDARD</SVFVendor>
@@ -49,10 +49,6 @@
 	<CableOptions>
 		<CableName>USB2</CableName>
 		<PortAdd>FTUSB-0</PortAdd>
-		<USBID>Dual RS232 A Location 0000</USBID>
-		<JTAGPinSetting>
-			TRST	ABSENT;
-			ISPEN	ABSENT;
-		</JTAGPinSetting>
+		<USBID>Dual RS232 A Location 0002</USBID>
 	</CableOptions>
 </ispXCF>

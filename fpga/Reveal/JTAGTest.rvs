@@ -1,19 +1,23 @@
-<Project ModBy="Analyzer" Name="D:/shanteryds1.git/Chosen_Sample/fpga/Reveal/JTAGTest.rvs" Date="2023-05-24">
+<Project ModBy="Analyzer" Name="D:/shanteryds1.git/Chosen_Sample/fpga/Reveal/JTAGTest.rvs" Date="2023-05-25">
  <Core Name="fpga_top_LA0">
   <Setting>
-   <Capture SamplesPerTrig="2048" NumTrigsCap="1"/>
+   <Capture SamplesPerTrig="1024" NumTrigsCap="1"/>
    <Event EventCnt="0" CntEnableRun="0"/>
    <TrigSetting PreTrgSamples="" AND_ALL="0" PostTrgSamples="" TURadix="0"/>
   </Setting>
   <Dataset Name="Base">
    <Trace>
+    <Sig Name="LPT_1"/>
+    <Sig Name="LPT_2"/>
+    <Sig Name="LPT_3"/>
+    <Sig Name="LPT_4"/>
+    <Sig Name="LPT_5"/>
+    <Sig Name="LPT_6"/>
     <Sig Name="LPT_7"/>
-    <Sig Name="JTAG_TDO"/>
-    <Sig Name="LPT_11"/>
-    <Sig Name="LPT_13"/>
+    <Sig Name="LPT_8"/>
    </Trace>
    <Trigger>
-    <TU Operator="7" Name="TU1" ID="1" Value="0" Radix="0"/>
+    <TU Operator="6" Name="TU1" ID="1" Value="1" Radix="0"/>
     <TE Enable="1" Expression="TU1" Name="TE1" ID="1"/>
    </Trigger>
   </Dataset>

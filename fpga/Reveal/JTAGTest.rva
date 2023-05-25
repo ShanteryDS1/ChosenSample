@@ -26,10 +26,14 @@
   <LACoreCount>1</LACoreCount>
   <WinUI CoreIndex="0">
    <TraceSigTreeData>
-    <TraceSignal IsHidden="false" Name="LPT_7" NodeType="0" PortIndex="0"/>
-    <TraceSignal IsHidden="false" Name="JTAG_TDO" NodeType="0" PortIndex="1"/>
-    <TraceSignal IsHidden="false" Name="LPT_11" NodeType="0" PortIndex="2"/>
-    <TraceSignal IsHidden="false" Name="LPT_13" NodeType="0" PortIndex="3"/>
+    <TraceSignal IsHidden="false" Name="LPT_1" NodeType="0" PortIndex="0"/>
+    <TraceSignal IsHidden="false" Name="LPT_2" NodeType="0" PortIndex="1"/>
+    <TraceSignal IsHidden="false" Name="LPT_3" NodeType="0" PortIndex="2"/>
+    <TraceSignal IsHidden="false" Name="LPT_4" NodeType="0" PortIndex="3"/>
+    <TraceSignal IsHidden="false" Name="LPT_5" NodeType="0" PortIndex="4"/>
+    <TraceSignal IsHidden="false" Name="LPT_6" NodeType="0" PortIndex="5"/>
+    <TraceSignal IsHidden="false" Name="LPT_7" NodeType="0" PortIndex="6"/>
+    <TraceSignal IsHidden="false" Name="LPT_8" NodeType="0" PortIndex="7"/>
    </TraceSigTreeData>
    <TriggerUI UserSelect="0" PreSelectType="0" PreSelect="1" UserSelectPos="0"/>
    <CoreRun Run="true"/>

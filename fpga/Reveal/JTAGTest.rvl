@@ -1,10 +1,10 @@
-<Project ModBy="Inserter" SigType="0" Name="D:/shanteryds1.git/Chosen_Sample/fpga/Reveal/JTAGTest.rvl" Date="2023-05-24">
+<Project ModBy="Inserter" SigType="0" Name="D:/shanteryds1.git/Chosen_Sample/fpga/Reveal/JTAGTest.rvl" Date="2023-05-25">
     <IP Version="1_6_042617"/>
     <Design DesignEntry="Schematic/Verilog HDL" Synthesis="lse" DeviceFamily="MachXO" DesignName="Chosen_Sample"/>
-    <Core InsertDataset="0" Insert="1" Reveal_sig="493970968" Name="fpga_top_LA0" ID="0">
+    <Core InsertDataset="0" Insert="1" Reveal_sig="494072775" Name="fpga_top_LA0" ID="0">
         <Setting>
             <Clock SampleClk="USB_CLKO" SampleEnable="0" EnableClk="" EnableClk_Pri="0"/>
-            <TraceBuffer Implementation="0" BitTimeStamp="0" hasTimeStamp="0" IncTrigSig="0" BufferDepth="2048"/>
+            <TraceBuffer Implementation="0" BitTimeStamp="0" hasTimeStamp="0" IncTrigSig="0" BufferDepth="1024"/>
             <Capture Mode="0" MinSamplesPerTrig="32"/>
             <Event CntEnable="0" MaxEventCnt="8"/>
             <TrigOut Polarity="0" MinPulseWidth="0" TrigOutNetType="1" EnableTrigOut="0" TrigOutNet="reveal_debug_fpga_top_LA0_net"/>
@@ -12,13 +12,17 @@
         </Setting>
         <Dataset Name="Base">
             <Trace>
+                <Sig Type="SIG" Name="LPT_1"/>
+                <Sig Type="SIG" Name="LPT_2"/>
+                <Sig Type="SIG" Name="LPT_3"/>
+                <Sig Type="SIG" Name="LPT_4"/>
+                <Sig Type="SIG" Name="LPT_5"/>
+                <Sig Type="SIG" Name="LPT_6"/>
                 <Sig Type="SIG" Name="LPT_7"/>
-                <Sig Type="SIG" Name="JTAG_TDO"/>
-                <Sig Type="SIG" Name="LPT_11"/>
-                <Sig Type="SIG" Name="LPT_13"/>
+                <Sig Type="SIG" Name="LPT_8"/>
             </Trace>
             <Trigger>
-                <TU Serialbits="0" Type="0" ID="1" Sig="LPT_13,"/>
+                <TU Serialbits="0" Type="0" ID="1" Sig="LPT_4,"/>
                 <TE MaxSequence="2" MaxEvnCnt="1" ID="1" Resource="0"/>
             </Trigger>
         </Dataset>
